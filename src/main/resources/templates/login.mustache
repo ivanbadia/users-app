@@ -1,0 +1,49 @@
+<html>
+<title>Login</title>
+
+<body>
+<h2>Please login</h2>
+<br/>
+The possible users are:
+<br/>
+<br/>
+page1/123<br/>
+page2/123<br/>
+page3/123<br/>
+admin/admin<br/>
+
+<p>
+<form action="/web/login" method="post">
+    <table>
+        <tr>
+            <td><label for="username">User name</label></td>
+            <td><input type="text" name="username" id="username"  {{#username}}value="{{username}}"{{/username}}></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password</label></td>
+            <td><input type="password" name="password" id="password"  {{#password}}value="{{password}}"{{/password}}></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="right">
+                <input id="login" type="Submit"/>
+            </td>
+        </tr>
+
+        {{#from}}
+            <input type="hidden" name="from" value="{{from}}">
+        {{/from}}
+
+    </table>
+
+
+    {{#message}}
+        <table>
+            <tr>
+                <strong style="color: red;">{{message}}</strong>
+            </tr>
+        </table>
+    {{/message}}
+
+</form>
+</body>
+</html>
