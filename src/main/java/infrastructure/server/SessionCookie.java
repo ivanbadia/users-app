@@ -1,16 +1,13 @@
 package infrastructure.server;
 
 
-import annotations.VisibleForTesting;
-
 import java.net.HttpCookie;
 import java.util.Optional;
 
 
 class SessionCookie{
 
-    @VisibleForTesting
-    static final String SESSION_COOKIE_NAME = "JSESSIONID";
+    private static final String SESSION_COOKIE_NAME = "JSESSIONID";
 
     private HttpCookie httpCookie;
 

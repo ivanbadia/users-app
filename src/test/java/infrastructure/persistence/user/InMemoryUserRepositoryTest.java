@@ -72,13 +72,8 @@ public class InMemoryUserRepositoryTest {
         userRepository.add(user);
 
         //Then
-        assertThat(userBy(user.getUsername()))
-                .isNotNull()
-                .isEqualTo(user);
-    }
-
-    private User userBy(String username) {
-        return userRepository.users.get(username);
+        assertThat(userRepository.all())
+                .contains(user);
     }
 
 
@@ -110,8 +105,8 @@ public class InMemoryUserRepositoryTest {
         userRepository.remove(user);
 
         //Then
-        assertThat(userBy(user.getUsername()))
-                .isNull();
+        assertThat(userRepository.all())
+                .doesNotContain(user);
     }
 
     private User anUser() {

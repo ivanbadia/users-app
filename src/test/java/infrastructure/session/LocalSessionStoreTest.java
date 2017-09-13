@@ -84,12 +84,12 @@ public class LocalSessionStoreTest {
         Thread.sleep(200);
 
         //When: we check if the session exists in the store
-        Session session = sessionStore.sessionsById.get(newSession.getId());
+        Optional<User> session = sessionStore.userOf(newSession.getId());
 
         //Then: the session has been expired
         assertThat(session)
                 .as("the session should be expired")
-                .isNull();
+                .isNotPresent();
     }
 
 

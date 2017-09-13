@@ -5,7 +5,6 @@ import application.test.ApplicationIT;
 import io.restassured.filter.session.SessionFilter;
 import org.junit.Test;
 
-import static application.web.controller.ApplicationController.*;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
 import static java.net.HttpURLConnection.HTTP_OK;
@@ -18,7 +17,12 @@ public class ApplicationControllerIT extends ApplicationIT{
     private static final String HELLO_PAGE_TITLE = "Hello Page";
     private static final String HTML_BODY = "html.body";
     private static final String HOME_PAGE_TITLE = "Home Page";
-    public static final String LOGIN_PAGE_TITLE = "Login";
+    private static final String LOGIN_PAGE_TITLE = "Login";
+    private static final String HOME_PAGE = "/web/restricted/links";
+    private static final String PAGE1 = "/web/restricted/page1";
+    private static final String PAGE2 = "/web/restricted/page2";
+    private static final String PAGE3 = "/web/restricted/page3";
+    private static final String LOGOUT = "/web/logout";
 
 
     @Test
@@ -38,7 +42,7 @@ public class ApplicationControllerIT extends ApplicationIT{
         given()
                 .auth().form(AppUsers.ADMIN_USERNAME, AppUsers.ADMIN_PASSWORD).
         when()
-                .get(ApplicationController.HOME_PAGE)
+                .get(HOME_PAGE)
         .then()
                 .statusCode(HTTP_OK)
                 .body(HTML_TITLE, equalTo(HOME_PAGE_TITLE));

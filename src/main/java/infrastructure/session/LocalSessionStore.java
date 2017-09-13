@@ -25,8 +25,7 @@ public final class LocalSessionStore implements SessionStore {
     //TODO this value should be moved to a configuration file
     private static final long FIVE_MINUTES_IN_MILLIS = 5 * 60 * 1000;
 
-    @VisibleForTesting
-    final ConcurrentHashMap<String, Session> sessionsById = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, Session> sessionsById = new ConcurrentHashMap<>();
     private final long expirationTimeInMs;
 
     private static final ScheduledExecutorService expirationService =

@@ -1,6 +1,5 @@
 package application.web.handler;
 
-import annotations.VisibleForTesting;
 import domain.model.user.AuthenticationService;
 import domain.model.user.User;
 import infrastructure.server.Handler;
@@ -18,12 +17,9 @@ import java.util.function.Predicate;
 
 public class LoginUser implements Handler<String> {
 
-    @VisibleForTesting
-    static final String USERNAME_PARAMETER = "username";
-    @VisibleForTesting
-    static final String PASSWORD_PARAMETER = "password";
-    @VisibleForTesting
-    static final String FROM_PARAMETER = "from";
+    private static final String USERNAME_PARAMETER = "username";
+    private  static final String PASSWORD_PARAMETER = "password";
+    private  static final String FROM_PARAMETER = "from";
 
     private String homePage;
     private SessionStore sessionStore;

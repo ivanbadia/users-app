@@ -11,7 +11,7 @@ public class SessionCookieTest {
     @Test
     public void cookie_should_be_created_from_header_value()  {
         //Given
-        String header = SessionCookie.SESSION_COOKIE_NAME+"=value";
+        String header = "JSESSIONID=value";
 
         //When
         Optional<SessionCookie> sessionCookie = SessionCookie.fromHeader(header);
@@ -19,7 +19,7 @@ public class SessionCookieTest {
         //Then
         assertThat(sessionCookie)
                 .isPresent()
-                .matches(cookie -> cookie.get().getName().equals(SessionCookie.SESSION_COOKIE_NAME))
+                .matches(cookie -> cookie.get().getName().equals("JSESSIONID"))
                 .matches(cookie ->  cookie.get().getValue().equals("value"));
 
     }

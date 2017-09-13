@@ -31,6 +31,9 @@ public class LoginUserTest {
     private static final String USERNAME = "user";
     private static final String PASSWORD = "pwd";
     private static final String HOME_PAGE = "home";
+    public static final String USERNAME_PARAMETER = "username";
+    public static final String PASSWORD_PARAMETER = "password";
+    public static final String FROM_PARAMETER = "from";
 
     @Mock
     private AuthenticationService authenticationService;
@@ -52,8 +55,8 @@ public class LoginUserTest {
 
         //Given: a request without username
         HttpContext httpContext = MockHttpContext.builder()
-                .withParameter(LoginUser.USERNAME_PARAMETER, "")
-                .withParameter(LoginUser.PASSWORD_PARAMETER, "123")
+                .withParameter(USERNAME_PARAMETER, "")
+                .withParameter("password", "123")
                 .build();
 
         //SetUp: Return a result when the page is rendered with the username error
@@ -77,8 +80,8 @@ public class LoginUserTest {
 
         //Given: a request without password
         HttpContext httpContext = MockHttpContext.builder()
-                .withParameter(LoginUser.USERNAME_PARAMETER, "admin")
-                .withParameter(LoginUser.PASSWORD_PARAMETER, "")
+                .withParameter(USERNAME_PARAMETER, "admin")
+                .withParameter(PASSWORD_PARAMETER, "")
                 .build();
 
         //SetUp: Return a result when the page is rendered with the password error
@@ -98,8 +101,8 @@ public class LoginUserTest {
 
         //Given: a request
         HttpContext httpContext = MockHttpContext.builder()
-                .withParameter(LoginUser.USERNAME_PARAMETER, USERNAME)
-                .withParameter(LoginUser.PASSWORD_PARAMETER, PASSWORD)
+                .withParameter(USERNAME_PARAMETER, USERNAME)
+                .withParameter(PASSWORD_PARAMETER, PASSWORD)
                 .build();
 
         //SetUp
@@ -124,9 +127,9 @@ public class LoginUserTest {
         //Given: a request
         String previousPage = "/previous";
         HttpContext httpContext = MockHttpContext.builder()
-                .withParameter(LoginUser.USERNAME_PARAMETER, USERNAME)
-                .withParameter(LoginUser.PASSWORD_PARAMETER, PASSWORD)
-                .withParameter(LoginUser.FROM_PARAMETER, previousPage)
+                .withParameter(USERNAME_PARAMETER, USERNAME)
+                .withParameter(PASSWORD_PARAMETER, PASSWORD)
+                .withParameter("from", previousPage)
                 .build();
 
         //SetUp
@@ -157,8 +160,8 @@ public class LoginUserTest {
     public void user_should_be_authorized_if_credentials_are_valid() {
         //Given: a request
         HttpContext httpContext = MockHttpContext.builder()
-                .withParameter(LoginUser.USERNAME_PARAMETER, USERNAME)
-                .withParameter(LoginUser.PASSWORD_PARAMETER, PASSWORD)
+                .withParameter(USERNAME_PARAMETER, USERNAME)
+                .withParameter(PASSWORD_PARAMETER, PASSWORD)
                 .build();
 
         //SetUp: the user credentials are valid and the session is created
@@ -185,9 +188,9 @@ public class LoginUserTest {
         //Given: a request with from parameter
         String previousPage = "/previouspage";
         HttpContext httpContext = MockHttpContext.builder()
-                .withParameter(LoginUser.USERNAME_PARAMETER, USERNAME)
-                .withParameter(LoginUser.PASSWORD_PARAMETER, PASSWORD)
-                .withParameter("from", previousPage)
+                .withParameter(USERNAME_PARAMETER, USERNAME)
+                .withParameter(PASSWORD_PARAMETER, PASSWORD)
+                .withParameter(FROM_PARAMETER, previousPage)
                 .build();
 
         //SetUp: the user credentials are valid and the session is created

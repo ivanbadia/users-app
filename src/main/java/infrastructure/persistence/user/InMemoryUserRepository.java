@@ -14,8 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 public final class InMemoryUserRepository implements UserRepository{
-    @VisibleForTesting
-    final Map<String, User> users = new ConcurrentHashMap<>();
+    private final Map<String, User> users = new ConcurrentHashMap<>();
     private final AtomicLong sequenceId = new AtomicLong(1);
 
 
